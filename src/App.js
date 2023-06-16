@@ -1,9 +1,9 @@
+import palavras from "./assets"
 
-
-function App() {
+export default function App() {
   return (
-    <></>
+    <>
+    
+    </>
   );
 }
-
-export default App;
