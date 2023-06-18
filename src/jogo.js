@@ -6,9 +6,30 @@ import forca3 from "./assets/forca3.png"
 import forca4 from "./assets/forca4.png"
 import forca5 from "./assets/forca5.png"
 import forca6 from "./assets/forca6.png"
+import palavras from "./palavras"
+import { useState } from "react";
 
-export default function Jogo() {
-    const palavra = "_ _ _ _ _ _ _ _ _"
+
+export default function Jogo({palavraEscolhida, setPalavraEscolhida, palavraOculta, setPalavraOculta}) {
+    
+    
+
+    function escolherPalavra(listaDePalavras) {
+        let palavraRandomica = listaDePalavras[Math.floor(Math.random() * listaDePalavras.length)];
+        setPalavraEscolhida(palavraRandomica)
+        console.log(palavraRandomica)
+
+        let palavraEmUnderline = ""
+        for (let i = 0; i < palavraRandomica.length; i++) {
+            palavraEmUnderline += "_ "
+        }
+        setPalavraOculta(palavraEmUnderline);
+        
+    }
+
+    
+
+    
 
     return (
         <DivEngloba>
@@ -17,9 +38,9 @@ export default function Jogo() {
             </LadoEsquerdo>
 
             <LadoDireito>
-                <button>Escolher Palavra</button>
+                <button onClick = {() => escolherPalavra(palavras)}>Escolher Palavra</button>
                 <div>
-                    <p> {palavra}</p>
+                    <p> {palavraOculta}</p>
                 </div>
             </LadoDireito>
 
