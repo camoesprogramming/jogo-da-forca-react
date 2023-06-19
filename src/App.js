@@ -17,8 +17,12 @@ export default function App() {
       setPalavraOculta = {setPalavraOculta}
       palavraEscolhida = {palavraEscolhida}
       setPalavraEscolhida = {setPalavraEscolhida}/>
-      <Letras />
-      <Chute />
+      <Letras 
+      palavraEscolhida = {palavraEscolhida}
+      />
+      <Chute 
+      palavraEscolhida = {palavraEscolhida}
+      />
     </>
   );
 }

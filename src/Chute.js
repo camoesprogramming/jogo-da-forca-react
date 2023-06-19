@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export default function Chute() {
+export default function Chute({palavraEscolhida}) {
     return (
-        <DivEngloba>
+        <DivEngloba className={palavraEscolhida !== "" ? "displayFlex" : "hidden"}>
             <p> Já sei a palavra!</p>
             <input></input>
             <button>Chutar</button>
@@ -13,7 +13,6 @@ export default function Chute() {
 }
 
 const DivEngloba = styled.div`
-    display: flex;
     width: 35%;
     margin: auto;
     margin-top: 64px;

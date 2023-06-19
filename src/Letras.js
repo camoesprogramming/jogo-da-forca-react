@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-export default function Letras() {
+export default function Letras({palavraEscolhida}) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
     return (
         <DivEngloba>
-           {alfabeto.map((letra) => (<li key={letra}>{letra}</li>))}
+           {alfabeto.map((letra) => (<li key={letra} className={palavraEscolhida !== "" ? "ativada" : "desativada"}>{letra}</li>))}
         </DivEngloba>
     )
 }
@@ -21,7 +21,6 @@ const DivEngloba = styled.div`
         min-width: 40px;
         min-height: 40px;
         margin-top: 12px;
-        background: #9FAAB5;
         border: 1px solid #7AA7C7;
         border-radius: 3px;
         list-style: none;
@@ -35,7 +34,6 @@ const DivEngloba = styled.div`
         font-size: 16px;
         line-height: 19px;
         text-align: center;
-        color: #798A9F;
         box-sizing:border-box;
     }
     

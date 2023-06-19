@@ -10,8 +10,8 @@ import palavras from "./palavras"
 import { useState } from "react";
 
 
-export default function Jogo({palavraEscolhida, setPalavraEscolhida, palavraOculta, setPalavraOculta}) {
-    
+export default function Jogo({palavraEscolhida, setPalavraEscolhida}) {
+    const [palavraOculta, setPalavraOculta] = useState("")
     
 
     function escolherPalavra(listaDePalavras) {
@@ -23,7 +23,10 @@ export default function Jogo({palavraEscolhida, setPalavraEscolhida, palavraOcul
         for (let i = 0; i < palavraRandomica.length; i++) {
             palavraEmUnderline += "_ "
         }
+        
         setPalavraOculta(palavraEmUnderline);
+
+        
         
     }
 
