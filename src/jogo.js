@@ -7,27 +7,68 @@ import forca4 from "./assets/forca4.png"
 import forca5 from "./assets/forca5.png"
 import forca6 from "./assets/forca6.png"
 import palavras from "./palavras"
-import { useState } from "react";
 
 
-export default function Jogo({palavraEscolhida, setPalavraEscolhida}) {
-    const [palavraOculta, setPalavraOculta] = useState("")
+
+export default function Jogo({ setPalavraEscolhida, palavraOculta, setPalavraOculta, qtdErros, setJogoAcabou }) {
+    
     
 
     function escolherPalavra(listaDePalavras) {
         let palavraRandomica = listaDePalavras[Math.floor(Math.random() * listaDePalavras.length)];
-        setPalavraEscolhida(palavraRandomica)
-        console.log(palavraRandomica)
+        
+       
+        
 
-        let palavraEmUnderline = ""
+        let palavraOcultaEmUnderline = ""
+        let palavraEscolhidaEmUnderLine = ""
+        
         for (let i = 0; i < palavraRandomica.length; i++) {
-            palavraEmUnderline += "_ "
+            palavraOcultaEmUnderline += "_ "
+            
         }
         
-        setPalavraOculta(palavraEmUnderline);
+        for (let j = 0; j < palavraOcultaEmUnderline.length; j++) {
+            if (j === 0 || j % 2 === 0 ) {
+                palavraEscolhidaEmUnderLine += palavraRandomica[j/2]
+            } else {
+                palavraEscolhidaEmUnderLine += " "
+            }
+        }
+        
+        setPalavraOculta(palavraOcultaEmUnderline);
+        setPalavraEscolhida(palavraEscolhidaEmUnderLine)
+        
 
         
         
+    }
+
+    function atualizaImg() {
+        if(qtdErros === 0) {
+            return forca0;
+        }
+        
+        if(qtdErros === 1) {
+            return forca1;
+        }
+        if(qtdErros === 2) {
+            return forca2;
+        }
+        if(qtdErros === 3) {
+            return forca3;
+        }
+        if(qtdErros === 4) {
+            return forca4;
+        }
+        if(qtdErros === 5) {
+            return forca5;
+        }
+        if(qtdErros === 6) {
+            return forca6;
+            
+        }
+
     }
 
     
@@ -37,7 +78,7 @@ export default function Jogo({palavraEscolhida, setPalavraEscolhida}) {
     return (
         <DivEngloba>
             <LadoEsquerdo>
-                <img src={forca0}></img>
+                <img src={atualizaImg()}></img>
             </LadoEsquerdo>
 
             <LadoDireito>
