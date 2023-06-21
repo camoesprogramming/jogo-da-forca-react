@@ -10,7 +10,7 @@ import palavras from "./palavras"
 
 
 
-export default function Jogo({ setPalavraEscolhida, palavraOculta, setPalavraOculta, qtdErros, setJogoAcabou }) {
+export default function Jogo({ palavraEscolhida, setPalavraEscolhida, palavraOculta, setPalavraOculta, qtdErros, jogoAcabou,setJogoAcabou }) {
     
     
 
@@ -66,25 +66,31 @@ export default function Jogo({ setPalavraEscolhida, palavraOculta, setPalavraOcu
         }
         if(qtdErros === 6) {
             return forca6;
-            
         }
 
     }
 
-    
+    function corDaLetra() {
+        if (qtdErros < 6 && jogoAcabou) {
+            return "green"
+        }
+        if (jogoAcabou) {
+            return "red"
+        }
+        return 
+    }
 
-    
 
     return (
         <DivEngloba>
             <LadoEsquerdo>
-                <img src={atualizaImg()}></img>
+                <img src={atualizaImg()} alt = "imagem da forca"></img>
             </LadoEsquerdo>
 
             <LadoDireito>
                 <button onClick = {() => escolherPalavra(palavras)}>Escolher Palavra</button>
                 <div>
-                    <p> {palavraOculta}</p>
+                    <p className= {corDaLetra()}> {palavraOculta}</p>
                 </div>
             </LadoDireito>
 
@@ -143,7 +149,6 @@ const LadoDireito = styled.div`
         display: flex;
         align-items: center;
         text-align: center;
-        color: #000000;
         margin-top: 282px;
     }
     

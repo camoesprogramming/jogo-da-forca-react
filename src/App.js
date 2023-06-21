@@ -12,11 +12,13 @@ export default function App() {
   const [jogoAcabou, setJogoAcabou] = useState(false)
   
   
+  
 
   return (
     <>
       <GlobalStyle />
       <Jogo 
+      palavraEscolhida = {palavraEscolhida}
       setPalavraEscolhida = {setPalavraEscolhida}
       palavraOculta = {palavraOculta}
       setPalavraOculta = {setPalavraOculta}

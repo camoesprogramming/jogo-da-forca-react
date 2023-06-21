@@ -23,3 +23,15 @@
 .displayFlex{
     display: flex;
 }
+
+.green {
+    color: green
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}

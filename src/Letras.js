@@ -8,15 +8,20 @@ export default function Letras({ palavraEscolhida, palavraOculta, setPalavraEsco
     const [listaLetrasClicadas, setListaLetrasClicadas] = useState([])
     // lista para guardar quais letras foram clicacadas
 
-    function verificaLetraClicada(letraClicada) {
-        console.log(jogoAcabou)
 
+
+    function verificaLetraClicada(letraClicada) {
+        
+        // se a palavra foi escolhida, ou a letra clicada ja foi clicada ou o jogoAcabou, retornamos se não adicionamos a letra na lista   
+        // de letras clicadas e prosseguimos
         if ((palavraEscolhida === "" || listaLetrasClicadas.includes(letraClicada)) || jogoAcabou) {
             return;
         } else {
             setListaLetrasClicadas([...listaLetrasClicadas, letraClicada])
         }
 
+        // se a palavra escolhida não inclui a letra clicada, adicionamos + 1 erro e caso ja tenha 5, setamos jogo acabou true
+        // caso não seja 5 adicionamos mais um erro e retornamos
         if (!(palavraEscolhida.includes(letraClicada))) {
             if (qtdErros === 5) {
                 setJogoAcabou(true)
@@ -24,12 +29,16 @@ export default function Letras({ palavraEscolhida, palavraOculta, setPalavraEsco
             setQtdErros(qtdErros + 1);
             return;
         }
+
+
         // primeiro transformamos as duas palavras em arrays
         const arrayPalavraEscolhida = palavraEscolhida.split('');
         const arrayPalavraOculta = palavraOculta.split('');
 
         // percorremos o array letra por letra na palavra escolhida, se for igual a letra clicada, 
-        // substituimos na espaço correspondente à oculta e retiramos o espaço logo depois dos dois arrays
+        // substituimos na espaço correspondente à oculta e retiramos o espaço logo depois, dos dois arrays
+
+
         for (let i = 0; i < arrayPalavraEscolhida.length; i++) {
             if (arrayPalavraEscolhida[i] === letraClicada) {
                 arrayPalavraOculta[i] = letraClicada;
@@ -38,10 +47,19 @@ export default function Letras({ palavraEscolhida, palavraOculta, setPalavraEsco
             }
         }
 
-        // transformamos a nova array de cada palavra em palavra e setamos como palavraescolhida e palavra Oculta
-        setPalavraOculta(arrayPalavraOculta.join(''))
-        setPalavraEscolhida(arrayPalavraEscolhida.join(''))
+        const novaPalavraOculta = arrayPalavraOculta.join('')
+        const novaPalavraEscolhida = arrayPalavraEscolhida.join('')
 
+        if(novaPalavraOculta === novaPalavraEscolhida) {
+            setJogoAcabou(true)
+        }
+
+
+
+
+        // transformamos a nova array de cada palavra em palavra e setamos como palavraescolhida e palavra Oculta
+        setPalavraOculta(novaPalavraOculta)
+        setPalavraEscolhida(novaPalavraEscolhida)
 
     }
 
