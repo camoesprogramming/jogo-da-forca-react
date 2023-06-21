@@ -10,16 +10,19 @@ import palavras from "./palavras"
 
 
 
-export default function Jogo({ palavraEscolhida, setPalavraEscolhida, palavraOculta, setPalavraOculta, qtdErros, jogoAcabou,setJogoAcabou }) {
+export default function Jogo({ palavraEscolhida, setPalavraEscolhida, palavraOculta, setPalavraOculta, qtdErros, jogoAcabou, setComparaChute }) {
     
     
 
     function escolherPalavra(listaDePalavras) {
-        let palavraRandomica = listaDePalavras[Math.floor(Math.random() * listaDePalavras.length)];
-        
-       
-        
+        if (palavraEscolhida !== "") {
+            window.location.reload(true)
+            return;
+        }
 
+        let palavraRandomica = listaDePalavras[Math.floor(Math.random() * listaDePalavras.length)];
+        setComparaChute(palavraRandomica)
+        
         let palavraOcultaEmUnderline = ""
         let palavraEscolhidaEmUnderLine = ""
         

@@ -1,14 +1,41 @@
+import { useState } from "react"
 import styled from "styled-components"
 
-export default function Chute({palavraEscolhida}) {
+export default function Chute({ comparaChute, qtdErros, setQtdErros, setPalavraOculta, setJogoAcabou }) {
+    const [palavraChutada, setPalavraChutada] = useState("");
+
+
+    function verificaChute() {
+        if (comparaChute === palavraChutada) {
+            setPalavraOculta(comparaChute)
+            setJogoAcabou(true)
+        } else {
+            // caso a palavra chutada tenha menos de 6 caracteres
+            if (palavraChutada.length < 6) {
+                // se a quantidade de letras chutadas menos a quantidade
+                if (palavraChutada.length - qtdErros < 6) {
+                    setQtdErros(palavraChutada.length - qtdErros);
+                } else {
+                    setQtdErros(6)
+                    setJogoAcabou(true)
+                }
+
+            } else {
+                setQtdErros(6)
+                setJogoAcabou(true)
+            }
+        }
+
+    }
+
     return (
-        <DivEngloba className={palavraEscolhida !== "" ? "displayFlex" : "hidden"}>
+        <DivEngloba className={comparaChute !== "" ? "displayFlex" : "hidden"}>
             <p> Já sei a palavra!</p>
-            <input></input>
-            <button>Chutar</button>
+            <input onChange={(event) => setPalavraChutada(event.target.value)}></input>
+            <button onClick={() => verificaChute()}>Chutar</button>
         </DivEngloba>
-        
-        
+
+
     )
 }
 
@@ -49,6 +76,7 @@ const DivEngloba = styled.div`
     }
 
     button {
+
         box-sizing: border-box;
         width: 100px;
         height: 40px;

@@ -54,10 +54,6 @@ export default function Letras({ palavraEscolhida, palavraOculta, setPalavraEsco
             setJogoAcabou(true)
         }
 
-
-
-
-        // transformamos a nova array de cada palavra em palavra e setamos como palavraescolhida e palavra Oculta
         setPalavraOculta(novaPalavraOculta)
         setPalavraEscolhida(novaPalavraEscolhida)
 

@@ -10,6 +10,7 @@ export default function App() {
   const [palavraOculta, setPalavraOculta] = useState("")
   const [qtdErros, setQtdErros] = useState(0)
   const [jogoAcabou, setJogoAcabou] = useState(false)
+  const [comparaChute, setComparaChute] = useState("")
   
   
   
@@ -20,12 +21,11 @@ export default function App() {
       <Jogo 
       palavraEscolhida = {palavraEscolhida}
       setPalavraEscolhida = {setPalavraEscolhida}
+      setComparaChute = {setComparaChute}
       palavraOculta = {palavraOculta}
       setPalavraOculta = {setPalavraOculta}
       qtdErros = {qtdErros}
       jogoAcabou = {jogoAcabou}
-      setJogoAcabou = {setJogoAcabou}
-      
       />
       <Letras 
       palavraEscolhida = {palavraEscolhida}
@@ -38,7 +38,11 @@ export default function App() {
       setJogoAcabou = {setJogoAcabou}
       />
       <Chute 
-      palavraEscolhida = {palavraEscolhida}
+      comparaChute = {comparaChute}
+      qtdErros = {qtdErros}
+      setQtdErros = {setQtdErros}
+      setPalavraOculta = {setPalavraOculta}
+      setJogoAcabou = {setJogoAcabou}
       />
     </>
   );
